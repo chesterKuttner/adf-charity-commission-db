@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-build-base-data"
+		},
+		"LS_ABLB_ADF_connectionString": {
+			"value": ""
+		},
+		"LS_ASQL_IBIS_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=sql-azure-uk-south.database.windows.net;Initial Catalog=charity-commission"
+		},
+		"LS_HTTP_AnonymousAuthType_properties_typeProperties_url": {
+			"value": "@{linkedService().baseURL}"
+		}
+	}
+}
