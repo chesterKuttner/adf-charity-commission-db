@@ -1,0 +1,30 @@
+{
+	"name": "DS_ABLB_SO_CharityCommisionsDatabase",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ABLB_ADF",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"fileName": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "CharityCommissionDatabase"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@concat(dataset().fileName,'.json')",
+					"type": "Expression"
+				},
+				"container": "charity-commission-database"
+			}
+		},
+		"schema": {}
+	}
+}

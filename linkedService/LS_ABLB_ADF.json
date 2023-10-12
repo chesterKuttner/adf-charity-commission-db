@@ -1,0 +1,15 @@
+{
+	"name": "LS_ABLB_ADF",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobStorage",
+		"typeProperties": {
+			"serviceEndpoint": "https://stadfdevuks001.blob.core.windows.net/",
+			"accountKind": "StorageV2"
+		},
+		"connectVia": {
+			"referenceName": "integrationRuntime001",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

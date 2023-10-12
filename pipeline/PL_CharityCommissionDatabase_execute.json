@@ -1,0 +1,93 @@
+{
+	"name": "PL_CharityCommissionDatabase_execute",
+	"properties": {
+		"activities": [
+			{
+				"name": "For each relative url",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.relativeURLs",
+						"type": "Expression"
+					},
+					"isSequential": false,
+					"activities": [
+						{
+							"name": "Execute CharityCommission",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "PL_CharityCommissionDatabase",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": false,
+								"parameters": {
+									"relativeURL": {
+										"value": "@item()",
+										"type": "Expression"
+									}
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "populate ibis_ccd",
+				"description": "populates a table that links to our ibis accounts by charity number.\nthe sp clears the table before populating it",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "For each relative url",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[job].[fill_IBIS_CharityCommissionData ]"
+				},
+				"linkedServiceName": {
+					"referenceName": "LS_ASQL_IBIS",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"parameters": {
+			"relativeURLs": {
+				"type": "array",
+				"defaultValue": [
+					"charity",
+					"charity_annual_return_history",
+					"charity_annual_return_parta",
+					"charity_annual_return_partb",
+					"charity_area_of_operation",
+					"charity_classification",
+					"charity_event_history",
+					"charity_governing_document",
+					"charity_other_names",
+					"charity_other_regulators",
+					"charity_policy",
+					"charity_published_report",
+					"charity_trustee"
+				]
+			}
+		},
+		"folder": {
+			"name": "CharityCommissionDatabase"
+		},
+		"annotations": []
+	}
+}

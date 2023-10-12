@@ -1,0 +1,27 @@
+{
+	"name": "DS_ASQL_SI_CharityCommissionsDatabase",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ASQL_IBIS",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"tableName": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "CharityCommissionDatabase"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "ccdb",
+			"table": {
+				"value": "@dataset().tableName",
+				"type": "Expression"
+			}
+		}
+	}
+}
