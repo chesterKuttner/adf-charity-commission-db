@@ -4,14 +4,7 @@
 		"annotations": [],
 		"type": "AzureSqlDatabase",
 		"typeProperties": {
-			"connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=sql-ibis-dev-uks-001.database.windows.net;Initial Catalog=sqldb-ibis-dev",
-			"alwaysEncryptedSettings": {
-				"alwaysEncryptedAkvAuthType": "ManagedIdentity"
-			}
-		},
-		"connectVia": {
-			"referenceName": "integrationRuntime001",
-			"type": "IntegrationRuntimeReference"
+			"connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=sql-azure-uk-south.database.windows.net;Initial Catalog=charity-commission"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/linkedservices"
