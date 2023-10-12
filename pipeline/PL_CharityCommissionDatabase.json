@@ -166,44 +166,6 @@
 				}
 			},
 			{
-				"name": "Delete json",
-				"type": "Delete",
-				"dependsOn": [
-					{
-						"activity": "BlobStorage to DB",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"dataset": {
-						"referenceName": "DS_ABLB_SO_CharityCommisionsDatabase",
-						"type": "DatasetReference",
-						"parameters": {
-							"fileName": {
-								"value": "@pipeline().parameters.relativeURL",
-								"type": "Expression"
-							}
-						}
-					},
-					"enableLogging": false,
-					"storeSettings": {
-						"type": "AzureBlobStorageReadSettings",
-						"recursive": true,
-						"enablePartitionDiscovery": false
-					}
-				}
-			},
-			{
 				"name": "Unzip file in blob strg",
 				"type": "Copy",
 				"dependsOn": [
